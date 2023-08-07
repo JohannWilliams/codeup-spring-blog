@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
 	<title>Guess Dice Roll</title>
+	<head th:replace="partials :: head" />
 </head>
 <body>
-
+<nav th:replace="partials :: navbar" />
 <main>
-	<h1 th:text="${roll}"></h1>
-	<h2 th:text="${guess}"></h2>
+	<h1>Dice Roll : <span th:text="${roll}"> Not Rolled.</span></h1>
+	<h2>You guessed: <span th:text="${guess}"> No Guess Yet.</span></h2>
 	<p th:text="${message}">Guess the dice roll bellow.</p>
 	
 	<div>
@@ -23,6 +23,6 @@
 	</div>
 	
 </main>
-
+<script th:insert="partials :: script"></script>
 </body>
 </html>

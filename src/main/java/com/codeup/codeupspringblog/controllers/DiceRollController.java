@@ -26,5 +26,13 @@ public class DiceRollController {
         return"roll-dice";
     }
 
+    @GetMapping("/roll-dice")
+    public String diceGuess(Model model){
+        model.addAttribute("roll", "Not Rolled.");
+        model.addAttribute("guess", "No Guess Yet.");
+        model.addAttribute("message", "Guess the dice roll bellow.");
+        return"roll-dice";
+    }
+
 
 }
