@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>All Posts</title>
+	<head th:insert="partials :: head" />
+</head>
+<body>
+<nav th:replace="partials :: navbar" />
+
+<main class="container">
+	<div class="row">
+		<div th:each="post : ${posts}" class="col-3 m-2">
+			<div class="card w-20">
+				<div class="card-body">
+					<h3 class="card-title"><span th:text="${post.title}"></span></h3>
+					<h5 class="card-text"><span th:text="${post.body}"></span></h5>
+				</div>
+				<div class="card-footer d-flex justify-content-end">
+					<a href="/posts/1" class="btn btn-dark">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+
+<script th:replace="partials :: script"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Guess Dice Roll</title>
-	<head th:replace="partials :: head" />
+	<head th:insert="partials :: head" />
 </head>
 <body>
 <nav th:replace="partials :: navbar" />
@@ -23,6 +23,6 @@
 	</div>
 	
 </main>
-<script th:insert="partials :: script"></script>
+<script th:replace="partials :: script"></script>
 </body>
 </html>
