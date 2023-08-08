@@ -8,12 +8,14 @@
 <nav th:replace="partials :: navbar" />
 
 <main class="container d-flex justify-content-center">
-	<div th:object="${post}">
-		<h1 class="text-center">Post</h1>
-		<div class="card" style="width: 18rem;">
+	<div th:object="${post}" class="container">
+		<h1 class="text-center m-5">Post</h1>
+		<div class="card w-50 m-auto">
+			<div class="card-title">
+				<h2 class="card-title text-center mt-3"><span th:text="*{title}"></span></h2>
+			</div>
 			<div class="card-body">
-				<h3 class="card-title"><span th:text="*{title}"></span></h3>
-				<h5 class="card-text"><span th:text="*{body}"></span></h5>
+				<h5 class="card-text text-center"><span th:text="*{body}"></span></h5>
 			</div>
 		</div>
 	</div>

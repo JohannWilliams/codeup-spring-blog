@@ -9,14 +9,16 @@
 
 <main class="container">
 	<div class="row">
-		<div th:each="post : ${posts}" class="col-3 m-2">
-			<div class="card w-20">
+		<div th:each="post : ${posts}" class="col-5 m-2">
+			<div class="card w-100 h-100">
+				<div class="card-title">
+					<h2 class="card-title ms-5 mt-4"><span th:text="${post.getTitle()}"></span></h2>
+				</div>
 				<div class="card-body">
-					<h3 class="card-title"><span th:text="${post.title}"></span></h3>
-					<h5 class="card-text"><span th:text="${post.body}"></span></h5>
+					<h5 class="card-text"><span th:text="${post.getBody()}"></span></h5>
 				</div>
 				<div class="card-footer d-flex justify-content-end">
-					<a href="/posts/1" class="btn btn-dark">Go somewhere</a>
+					<a th:href="@{/posts/{id}(id=${post.getId()})}" class="btn btn-dark">Go somewhere</a>
 				</div>
 			</div>
 		</div>
