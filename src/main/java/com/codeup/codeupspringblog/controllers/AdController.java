@@ -25,7 +25,7 @@ public class AdController {
 
     @GetMapping({"/ads/{id}", "/ads/{id}/"})
     public String showAd(@PathVariable String id, Model model){
-        model.addAttribute("ad", adDao.getById(Long.parseLong(id)));
+        model.addAttribute("ad", adDao.findAdById(Long.parseLong(id)));
         return "ads/show";
     }
 
