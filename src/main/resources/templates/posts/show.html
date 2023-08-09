@@ -17,6 +17,10 @@
 			<div class="card-body">
 				<h5 class="card-text text-center"><span th:text="*{body}"></span></h5>
 			</div>
+			<div class="card-footer d-flex">
+				<span>Posted by: <span th:text="*{user.username}"></span></span>
+				<span class="ms-auto" th:text="*{user.email}"></span>
+			</div>
 		</div>
 	</div>
 </main>
