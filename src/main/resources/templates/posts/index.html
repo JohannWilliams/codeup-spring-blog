@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>All Posts</title>
-	<head th:insert="partials :: head" />
+	<head th:insert="partials/head :: head" />
 </head>
 <body>
-<nav th:replace="partials :: navbar" />
+<nav th:replace="partials/nav :: navbar" />
 
 <main class="container">
 	<div class="row">
@@ -25,7 +25,6 @@
 	</div>
 </main>
 
-
-<script th:replace="partials :: script"></script>
+<div th:replace="partials/script :: script"></div>
 </body>
 </html>
