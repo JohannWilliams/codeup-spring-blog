@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Ads</title>
+	<head th:insert="partials/head :: head"></head>
+</head>
+<body>
+<nav th:replace="partials/nav :: navbar" />
+
+
+<main class="container">
+	<div class="row">
+		<div th:each="ad : ${ads}" class="col-5 m-2">
+			<div class="card w-100 h-100">
+				<div class="card-title">
+					<h2 class="card-title ms-5 mt-4"><span th:text="${ad.getTitle()}"></span></h2>
+				</div>
+				<div class="card-body">
+					<h5 class="card-text"><span th:text="${ad.getDescription()}"></span></h5>
+				</div>
+				<div class="card-footer d-flex justify-content-end">
+					<a th:href="@{/ads/{id}(id=${ad.getId()})}" class="btn btn-dark">Go somewhere</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+
+<script th:replace="partials/script :: script"></script>
+</body>
+</html>
