@@ -1,7 +1,9 @@
 package com.codeup.codeupspringblog.controllers;
 
 import com.codeup.codeupspringblog.models.Ad;
+import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.AdRepository;
+import com.codeup.codeupspringblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class AdController {
     private final AdRepository adDao;
+    private final UserRepository userDao;
 
-    public AdController(AdRepository adDao) {
+    public AdController(AdRepository adDao, UserRepository userDao) {
         this.adDao = adDao;
+        this.userDao = userDao;
     }
 
     @GetMapping({"/ads", "/ads/"})
@@ -36,7 +40,8 @@ public class AdController {
 
     @PostMapping({"/ads/create", "/ads/create/"})
     public String adsPostIndex(@RequestParam(name="title") String title, @RequestParam(name="description") String description, Model model){
-        adDao.save(new Ad(title, description));
+        User user = userDao.findUserById(1L);
+        adDao.save(new Ad(title, description, user));
         return "redirect:/ads";
     }
 }
