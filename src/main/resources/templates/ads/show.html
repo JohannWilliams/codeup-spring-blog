@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Ad Details</title>
+	<head th:insert="partials/head :: head" />
+</head>
+<body>
+<nav th:replace="partials/nav :: navbar" />
+
+<main class="container d-flex justify-content-center">
+	<div th:object="${ad}" class="container">
+		<h1 class="text-center m-5">Ad</h1>
+		<div class="card w-50 m-auto">
+			<div class="card-title">
+				<h2 class="card-title text-center mt-3"><span th:text="*{title}"></span></h2>
+			</div>
+			<div class="card-body">
+				<h5 class="card-text text-center"><span th:text="*{description}"></span></h5>
+			</div>
+			<div class="card-footer d-flex">
+				<span>Posted by: <span th:text="*{user.username}"></span></span>
+				<span class="ms-auto" th:text="*{user.email}"></span>
+			</div>
+		</div>
+	</div>
+</main>
+
+<div th:replace="partials/script :: script"></div>
+</body>
+</html>

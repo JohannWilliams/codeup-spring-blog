@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Create New Post</title>
-	<head th:insert="partials/head :: head" />
+	<title>Title</title>
+	<head th:insert="partials/head :: head"></head>
 </head>
 <body>
 <nav th:replace="partials/nav :: navbar" />
 
 <main class="container">
 	<div class="container d-flex justify-content-center">
-		<h1 class="my-4">Create Post</h1>
+		<h1 class="my-4">Create Ad</h1>
 	</div>
 	<div class="container d-flex justify-content-center">
 		<div class="card w-50">
-			<form action="/posts/create" method="post">
+			<form th:action="@{/ads/create}" th:method="post">
 				<div class="card-body">
 					<div class="mb-3">
-						<label for="title" class="form-label">Post Title</label>
-						<input type="text" class="form-control" id="title" name="title">
+						<label for="title" class="form-label">Title</label>
+						<input type="text" class="form-control" name="title" id="title">
 					</div>
 					<div class="mb-3">
-						<label for="body" class="form-label">Password</label>
-						<textarea class="form-control" id="body" name="body" cols="33" rows="5"></textarea>
+						<label for="description" class="form-label">Description</label>
+						<textarea type="text" class="form-control" name="description" id="description" cols="33" rows="5"></textarea>
 					</div>
 				</div>
 				<div class="card-footer d-flex justify-content-end">
-					<button type="submit" class="btn btn-dark">Post</button>
+					<button type="submit" class="btn btn-dark">Create Ad</button>
 				</div>
 			</form>
 		</div>
 	</div>
 </main>
-
 <script th:replace="partials/script :: script"></script>
 </body>
 </html>
