@@ -24,6 +24,9 @@ public class User {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Ad> ads;
 
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
+    private List<Post> posts;
+
     public User() {
     }
 
