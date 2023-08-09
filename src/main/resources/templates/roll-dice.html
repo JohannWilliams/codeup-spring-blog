@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Guess Dice Roll</title>
-	<head th:insert="partials :: head" />
+	<head th:insert="partials/head :: head" />
 </head>
 <body>
-<nav th:replace="partials :: navbar" />
+<nav th:replace="partials/nav :: navbar" />
 <main>
 	<h1>Dice Roll : <span th:text="${roll}"> Not Rolled.</span></h1>
 	<h2>You guessed: <span th:text="${guess}"> No Guess Yet.</span></h2>
@@ -21,8 +21,8 @@
 			<li><a href="/roll-dice/6" >6</a></li>
 		</ul>
 	</div>
-	
 </main>
-<script th:replace="partials :: script"></script>
+
+<div th:replace="partials/script :: script"></div>
 </body>
 </html>

@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Create New Post</title>
-	<head th:insert="partials :: head" />
+	<head th:insert="partials/head :: head" />
 </head>
 <body>
-<nav th:replace="partials :: navbar" />
+<nav th:replace="partials/nav :: navbar" />
 
 <main class="container">
 	<div class="container d-flex justify-content-center">
@@ -32,7 +32,6 @@
 	</div>
 </main>
 
-
-<script th:replace="partials :: script"></script>
+<script th:replace="partials/script :: script"></script>
 </body>
 </html>
