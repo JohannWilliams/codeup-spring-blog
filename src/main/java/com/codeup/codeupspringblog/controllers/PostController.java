@@ -33,15 +33,38 @@ public class PostController {
     }
 
     @GetMapping({"/posts/create", "/posts/create/"})
-    public String createPostView(){
+    public String createPostView(Model model){
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping({"/posts/create", "/posts/create/"})
-    public String createPostPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body){
+    public String createPostPost(@ModelAttribute Post post){
         User user = userDao.findUserById(1L);
-        postDao.save(new Post(title, body, user));
+        post.setUser(user);
+        postDao.save(post);
         return "redirect:/posts";
+    }
+
+    @GetMapping({"/posts/{id}/edit", "/posts/{id}/edit/"})
+    public String editPostView(Model model, @PathVariable String id){
+        Post post = postDao.findPostById(Long.parseLong(id));
+        model.addAttribute("id", id);
+        model.addAttribute("post", post);
+        model.addAttribute("form-action", "@{/posts/{id}/edit(id=${id})}");
+        return "posts/edit";
+    }
+
+    @PostMapping({"/posts/{id}/edit", "/posts/{id}/edit/"})
+    public String editPost(@ModelAttribute Post post){
+        if(post.getUser() == null) {
+            User user = userDao.findUserById(1L);
+            post.setUser(user);
+        }
+
+        postDao.save(post);
+        String redirectString = "redirect:/posts/" + post.getId();
+        return redirectString;
     }
 
 }

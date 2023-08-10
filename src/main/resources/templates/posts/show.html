@@ -10,16 +10,17 @@
 <main class="container d-flex justify-content-center">
 	<div th:object="${post}" class="container">
 		<h1 class="text-center m-5">Post</h1>
-		<div class="card w-50 m-auto">
+		<div class="card w-75 m-auto">
 			<div class="card-title">
 				<h2 class="card-title text-center mt-3"><span th:text="*{title}"></span></h2>
 			</div>
 			<div class="card-body">
 				<h5 class="card-text text-center"><span th:text="*{body}"></span></h5>
 			</div>
-			<div class="card-footer d-flex">
+			<div class="card-footer d-flex align-items-center">
 				<span>Posted by: <span th:text="*{user.username}"></span></span>
-				<span class="ms-auto" th:text="*{user.email}"></span>
+				<span class="mx-auto" th:text="*{user.email}"></span>
+				<a th:href="@{/posts/{id}/edit(id=${id})}" class="btn btn-dark 5">Edit Post</a>
 			</div>
 		</div>
 	</div>
