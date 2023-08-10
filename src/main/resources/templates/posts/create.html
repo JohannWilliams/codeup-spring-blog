@@ -13,21 +13,7 @@
 	</div>
 	<div class="container d-flex justify-content-center">
 		<div class="card w-50">
-			<form th:action="@{/posts/create}" th:method="post" th:object="${post}">
-				<div class="card-body">
-					<div class="mb-3">
-						<label for="title" class="form-label">Post Title</label>
-						<input type="text" class="form-control" id="title" name="title" th:field="*{title}">
-					</div>
-					<div class="mb-3">
-						<label for="body" class="form-label">Password</label>
-						<textarea class="form-control" id="body" name="body" cols="33" rows="5" th:field="*{body}"></textarea>
-					</div>
-				</div>
-				<div class="card-footer d-flex justify-content-end">
-					<button type="submit" class="btn btn-dark">Post</button>
-				</div>
-			</form>
+			<form th:replace="partials/post ::postsForm(@{/posts/crete},'Create')"></form>
 		</div>
 	</div>
 </main>

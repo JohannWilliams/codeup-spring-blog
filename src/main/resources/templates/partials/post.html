@@ -1,0 +1,18 @@
+
+
+<form th:fragment="postsForm(action,btnText)" th:action="${action}" th:method="post" th:object="${post}">
+	<div class="card-body">
+		<div class="mb-3">
+			<label for="title" class="form-label">Post Title</label>
+			<input type="text" class="form-control" id="title" name="title" th:field="*{title}">
+		</div>
+		<div class="mb-3">
+			<label for="body" class="form-label">Password</label>
+			<textarea class="form-control" id="body" name="body" cols="33" rows="5" th:field="*{body}"></textarea>
+		</div>
+	</div>
+	<div class="card-footer d-flex justify-content-end">
+		<a th:if="${edit == true}" th:href="@{/posts/{id}(id=${id})}" class="btn btn-secondary mx-3">Cancel</a>
+		<button type="submit" class="btn btn-dark mx-3" th:text="${btnText}"></button>
+	</div>
+</form>

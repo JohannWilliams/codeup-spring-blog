@@ -50,6 +50,7 @@ public class PostController {
     public String editPostView(Model model, @PathVariable String id){
         Post post = postDao.findPostById(Long.parseLong(id));
         model.addAttribute("post", post);
+        model.addAttribute("edit", true);
         return "posts/edit";
     }
 
