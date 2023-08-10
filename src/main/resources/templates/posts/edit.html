@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Edit Post</title>
+	<head th:insert="partials/head :: head" />
+</head>
+<body>
+<nav th:replace="partials/nav :: navbar" />
+
+<main class="container">
+	<div class="container d-flex justify-content-center">
+		<h1 class="my-4">Edit Post</h1>
+	</div>
+	<div class="container d-flex justify-content-center">
+		<div class="card w-50">
+			<form th:action="@{/posts/{id}/edit(id=${id})}" th:method="post" th:object="${post}">
+				<div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label for="title" class="form-label">Post</label>
+							<input type="text" class="form-control" id="title" name="title" th:field="*{title}">
+						</div>
+						<div class="mb-3">
+							<label for="body" class="form-label">Body</label>
+							<textarea class="form-control" id="body" name="body" cols="33" rows="5" th:field="*{body}"></textarea>
+						</div>
+					</div>
+					<div class="card-footer d-flex">
+						<a th:href="@{/posts/{id}(id=${id})}" class="btn btn-secondary">Cancel</a>
+						<button type="submit" class="btn btn-dark ms-auto">Edit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</main>
+
+<script th:replace="partials/script :: script"></script>
+</body>
+</html>
