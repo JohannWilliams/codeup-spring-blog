@@ -49,20 +49,16 @@ public class PostController {
     @GetMapping({"/posts/{id}/edit", "/posts/{id}/edit/"})
     public String editPostView(Model model, @PathVariable String id){
         Post post = postDao.findPostById(Long.parseLong(id));
-        model.addAttribute("id", id);
         model.addAttribute("post", post);
-        model.addAttribute("form-action", "@{/posts/{id}/edit(id=${id})}");
         return "posts/edit";
     }
 
     @PostMapping({"/posts/{id}/edit", "/posts/{id}/edit/"})
     public String editPost(@ModelAttribute Post post){
-        if(post.getUser() == null) {
-            User user = userDao.findUserById(1L);
-            post.setUser(user);
-        }
-
-        postDao.save(post);
+        Post postToUpdate = postDao.findPostById(post.getId());
+        postToUpdate.setTitle(post.getTitle());
+        postToUpdate.setBody(post.getBody());
+        postDao.save(postToUpdate);
         String redirectString = "redirect:/posts/" + post.getId();
         return redirectString;
     }
