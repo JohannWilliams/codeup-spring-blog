@@ -1,9 +1,11 @@
 package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.util.List;
 
+@ToString
 @Entity
 @Table(name="users")
 public class User {

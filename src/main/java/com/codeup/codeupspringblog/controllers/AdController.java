@@ -5,6 +5,7 @@ import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.AdRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +43,8 @@ public class AdController {
 
     @PostMapping({"/ads/create", "/ads/create/"})
     public String adsPostIndex(@ModelAttribute Ad ad){
-        User user = userDao.findUserById(1L);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println(user);
         ad.setUser(user);
         adDao.save(ad);
 
