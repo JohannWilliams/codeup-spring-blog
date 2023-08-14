@@ -1,9 +1,11 @@
 package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.util.List;
 
+@ToString
 @Entity
 @Table(name="users")
 public class User {
@@ -28,6 +30,13 @@ public class User {
     private List<Post> posts;
 
     public User() {
+    }
+
+    public User(User copy){
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
     }
 
     public long getId() {
@@ -68,5 +77,13 @@ public class User {
 
     public void setAds(List<Ad> ads) {
         this.ads = ads;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
