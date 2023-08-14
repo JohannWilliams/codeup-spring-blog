@@ -78,4 +78,12 @@ public class User {
     public void setAds(List<Ad> ads) {
         this.ads = ads;
     }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 }

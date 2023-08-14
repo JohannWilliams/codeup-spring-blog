@@ -2,6 +2,7 @@ package com.codeup.codeupspringblog.controllers;
 
 import com.codeup.codeupspringblog.models.Ad;
 import com.codeup.codeupspringblog.models.User;
+import com.codeup.codeupspringblog.models.UserWithRoles;
 import com.codeup.codeupspringblog.repositories.AdRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
@@ -43,8 +44,7 @@ public class AdController {
 
     @PostMapping({"/ads/create", "/ads/create/"})
     public String adsPostIndex(@ModelAttribute Ad ad){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(user);
+        User user = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ad.setUser(user);
         adDao.save(ad);
 
