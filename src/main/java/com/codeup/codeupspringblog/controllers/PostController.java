@@ -56,10 +56,15 @@ public class PostController {
 
     @GetMapping({"/posts/{id}/edit", "/posts/{id}/edit/"})
     public String editPostView(Model model, @PathVariable String id){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post post = postDao.findPostById(Long.parseLong(id));
-        model.addAttribute("post", post);
-        model.addAttribute("edit", true);
-        return "posts/edit";
+        if(user.getId() == post.getUser().getId()){
+            model.addAttribute("post", post);
+            model.addAttribute("edit", true);
+            return "posts/edit";
+        }else {
+            return "redirect:/posts";
+        }
     }
 
     @PostMapping({"/posts/{id}/edit", "/posts/{id}/edit/"})
