@@ -2,15 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Ads</title>
-	<head th:insert="partials/head :: head"></head>
+	<head th:insert="~{partials/head :: head}"></head>
 </head>
 <body>
-<nav th:replace="partials/nav :: navbar" />
+<nav th:replace="~{partials/nav :: navbar}"></nav>
 
 
 <main class="container">
+	<h1 class="text-center my-5">All Ads</h1>
 	<div class="row">
-		<div th:each="ad : ${ads}" class="col-5 m-2">
+		<div th:each="ad : ${ads}" class="col-5 mx-auto my-2">
 			<div class="card w-100 h-100">
 				<div class="card-title">
 					<h2 class="card-title ms-5 mt-4"><span th:text="${ad.getTitle()}"></span></h2>
@@ -26,6 +27,6 @@
 	</div>
 </main>
 
-<script th:replace="partials/script :: script"></script>
+<script th:replace="~{partials/script :: script}"></script>
 </body>
 </html>

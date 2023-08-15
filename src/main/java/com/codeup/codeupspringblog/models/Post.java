@@ -1,7 +1,9 @@
 package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
+//@ToString
 @Entity
 @Table(name = "posts")
 public class Post {

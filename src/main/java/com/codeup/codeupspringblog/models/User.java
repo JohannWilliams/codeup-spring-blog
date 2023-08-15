@@ -5,7 +5,7 @@ import lombok.ToString;
 
 import java.util.List;
 
-@ToString
+//@ToString
 @Entity
 @Table(name="users")
 public class User {
