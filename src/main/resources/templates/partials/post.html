@@ -13,6 +13,7 @@
 	</div>
 	<div class="card-footer d-flex justify-content-end">
 		<a th:if="${edit == true}" th:href="@{/posts/{id}(id=${id})}" class="btn btn-secondary mx-3">Cancel</a>
+		<a th:if="${edit == true}" th:href="@{/posts/{id}/delete(id=${id})}" class="btn btn-warning ms-auto me-3">Delete</a>
 		<button type="submit" class="btn btn-dark mx-3" th:text="${btnText}"></button>
 	</div>
 </form>

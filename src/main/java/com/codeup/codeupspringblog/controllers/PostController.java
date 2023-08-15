@@ -46,7 +46,7 @@ public class PostController {
 
     @PostMapping({"/posts/create", "/posts/create/"})
     public String createPostPost(@ModelAttribute Post post){
-        User user = (UserWithRoles) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
         postDao.save(post);
 
@@ -77,4 +77,29 @@ public class PostController {
         return redirectString;
     }
 
+    @GetMapping({"/posts/{id}/delete", "/posts/{id}/delete/"})
+    public String deletePostView(Model model, @PathVariable String id){
+        System.out.println("id = " + id + " in delete get mapping");
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        System.out.println("user = " + user + " in delete get mapping");
+
+        Post post = postDao.findPostById(Long.parseLong(id));
+        System.out.println("post = " + post + " in delete get mapping");
+
+        if(user.getId() == post.getUser().getId()){
+            System.out.println("User == posts user");
+            model.addAttribute("post", post);
+            return "posts/delete";
+        }else {
+            System.out.println("User does not == posts user");
+            return "redirect:/posts";
+        }
+    }
+
+    @PostMapping({"/posts/{id}/delete","/posts/{id}/delete/"})
+    public String deletePost(@PathVariable String id){
+        Post postToDelete = postDao.findPostById(Long.parseLong(id));
+        postDao.delete(postToDelete);
+        return "redirect:/posts";
+    }
 }

@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Create New Post</title>
-	<head th:insert="partials/head :: head" />
+	<head th:insert="~{partials/head :: head}"></head>
 </head>
 <body>
-<nav th:replace="partials/nav :: navbar" />
+<nav th:replace="~{partials/nav :: navbar}"></nav>
 
 <main class="container">
 	<div class="container d-flex justify-content-center">
@@ -13,11 +13,11 @@
 	</div>
 	<div class="container d-flex justify-content-center">
 		<div class="card w-50">
-			<form th:replace="partials/post ::postsForm(@{/posts/create},'Create')"></form>
+			<form th:replace="~{partials/post ::postsForm(@{/posts/create},'Create')}"></form>
 		</div>
 	</div>
 </main>
 
-<script th:replace="partials/script :: script"></script>
+<script th:replace="~{partials/script :: script}"></script>
 </body>
 </html>
