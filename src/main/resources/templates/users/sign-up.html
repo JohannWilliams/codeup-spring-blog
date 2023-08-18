@@ -9,6 +9,7 @@
 <form th:action="@{/sign-up}" method="POST" th:object="${user}">
 	<label for="username">Username</label>
 	<input id="username" th:field="*{username}" />
+	<p th:if="${error != false}" th:text="${error}"></p>
 	
 	<label for="email">Email</label>
 	<input id="email" th:field="*{email}" />
